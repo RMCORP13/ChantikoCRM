@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="ChantikoCRM : le CRM du bâtiment qui arrive déjà rempli. Entreprises du BTP et chantiers autour de vous, contacts, journal et relances, pour les commerciaux des négoces et des loueurs.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F1F3F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#09110F" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ChantikoCRM">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icone-192.png">
+<link rel="apple-touch-icon" href="icone-180.png">
+<style>:root{padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>ChantikoCRM</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Page d'accueil : barre de navigation fixe → bandeau encre (titre à gauche, aperçu de l'application à droite) → six fonctions en cartes → trois étapes → démonstration par filtres → tarifs → appel final → pied de page.
+   Mêmes couleurs que l'application : encre, jaune chantier, gris béton clair. Le bandeau reste encre dans les deux thèmes. */
+:root{
+  --bg:#F1F3F2; --panel:#FFFFFF; --ink:#0F1A17; --muted:#55615D; --line:#D9DFDC; --soft:#E8ECEA;
+  --site:#FFC21A; --site-ink:#7A5500; --site-soft:#FFF2C7; --on-site:#0F1A17; --focus:#1B5FD1;
+  --hero:#0F1A17; --hero-ink:#F1F4F2; --hero-muted:#A9B6B1; --hero-line:#2A3833; --hero-card:#18241F;
+  --s-talk:#16804F; --m-go:#8A4B2A; --m-pl:#2A63C6; --m-is:#8A2BB8;
+  --shadow:0 1px 2px rgba(15,26,23,.06),0 14px 36px rgba(15,26,23,.10);
+  --f-display:"Bricolage Grotesque","Arial Narrow",Arial,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#09110F; --panel:#111B18; --ink:#E9EFEC; --muted:#98A6A1; --line:#22302B; --soft:#18241F;
+  --site:#FFC21A; --site-ink:#FFD45C; --site-soft:#3A2F0B; --on-site:#0F1A17; --focus:#7AA7FF;
+  --hero:#060C0A; --hero-ink:#F1F4F2; --hero-muted:#A9B6B1; --hero-line:#22302B; --hero-card:#111B18;
+  --s-talk:#3CC07E; --m-go:#D39A76; --m-pl:#6A9BF4; --m-is:#C77DFF;
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 14px 36px rgba(0,0,0,.45); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#09110F; --panel:#111B18; --ink:#E9EFEC; --muted:#98A6A1; --line:#22302B; --soft:#18241F;
+  --site:#FFC21A; --site-ink:#FFD45C; --site-soft:#3A2F0B; --on-site:#0F1A17; --focus:#7AA7FF;
+  --hero:#060C0A; --hero-ink:#F1F4F2; --hero-muted:#A9B6B1; --hero-line:#22302B; --hero-card:#111B18;
+  --s-talk:#3CC07E; --m-go:#D39A76; --m-pl:#6A9BF4; --m-is:#C77DFF;
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 14px 36px rgba(0,0,0,.45); color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.in{max-width:1160px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h2{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,4vw,40px);line-height:1.1;letter-spacing:-.03em;margin:0;text-wrap:balance}
+.kicker{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--site-ink);margin:0 0 10px}
+.lead{color:var(--muted);font-size:17px;max-width:60ch;margin:12px 0 0}
+section{padding-block:76px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;white-space:nowrap;font-family:inherit}
+.btn.y{background:var(--site);color:var(--on-site)}
+.btn.y:hover{filter:brightness(1.06)}
+.btn.ghost{border-color:var(--hero-line);color:var(--hero-ink)}
+.btn.ghost:hover{border-color:var(--hero-muted)}
+.btn.dark{background:var(--ink);color:var(--bg)}
+.btn.sm{height:40px;padding:0 16px;font-size:14px;border-radius:10px}
+
+/* Navigation */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--bg)}
+.nav .in{display:flex;align-items:center;gap:24px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--f-display);font-weight:800;font-size:25px;letter-spacing:-.035em;line-height:1}
+.brand svg{width:34px;height:34px;flex:none}
+.brand .tile{fill:var(--ink)}.brand .arc{stroke:var(--site)}.brand .sq{fill:var(--panel)}
+.brand .crm{background:var(--site);color:var(--on-site);font-size:11px;letter-spacing:.06em;padding:4px 7px 3px;border-radius:6px;margin-left:-2px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .brand .tile{fill:var(--site)}:root:not([data-theme="light"]) .brand .arc{stroke:var(--on-site)}:root:not([data-theme="light"]) .brand .sq{fill:var(--on-site)}}
+:root[data-theme="dark"] .brand .tile{fill:var(--site)}:root[data-theme="dark"] .brand .arc{stroke:var(--on-site)}:root[data-theme="dark"] .brand .sq{fill:var(--on-site)}
+.links{display:flex;gap:26px;margin:0 auto;font-size:15px;font-weight:500}
+.links a{text-decoration:none;color:var(--muted)}
+.links a:hover{color:var(--ink)}
+
+/* Bandeau */
+.hero{background:var(--hero);color:var(--hero-ink);padding-block:72px 80px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-180px;top:-160px;width:560px;height:560px;border:90px solid var(--site);border-right-color:transparent;border-radius:50%;opacity:.07;pointer-events:none}
+.hero .in{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center;position:relative}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--hero-line);border-radius:999px;padding:6px 14px;font-size:13px;color:var(--hero-muted)}
+.pill i{width:8px;height:8px;background:var(--site);display:inline-block}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(38px,6vw,64px);line-height:1.02;letter-spacing:-.04em;margin:22px 0 0;text-wrap:balance}
+h1 b{background:var(--site);color:var(--on-site);padding:0 .14em;border-radius:10px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hero p{color:var(--hero-muted);font-size:18px;max-width:46ch;margin:22px 0 0}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.figs{display:flex;flex-wrap:wrap;gap:14px 40px;margin:44px 0 0;padding:0;list-style:none}
+.figs b{display:block;font-family:var(--f-display);font-weight:800;font-size:34px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.figs span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--hero-muted)}
+
+/* Aperçu de l'application */
+.win{background:var(--panel);color:var(--ink);border-radius:18px;box-shadow:0 30px 70px rgba(0,0,0,.45);overflow:hidden;min-width:0}
+.bar{display:flex;align-items:center;gap:8px;padding:11px 14px;background:var(--soft);font-size:12.5px;color:var(--muted);border-bottom:1px solid var(--line)}
+.bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.bar span{margin-left:6px}
+.wb{padding:18px}
+.wb h3{font-family:var(--f-display);font-weight:800;font-size:22px;letter-spacing:-.02em;margin:0}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.tile2{background:var(--soft);border-radius:10px;padding:10px 12px}
+.tile2 b{display:block;font-family:var(--f-display);font-weight:800;font-size:23px;line-height:1.1;font-variant-numeric:tabular-nums}
+.tile2 span{font-size:12px;color:var(--muted)}
+.due{margin-top:12px;background:var(--site-soft);color:var(--site-ink);border-radius:10px;padding:9px 12px;font-size:13px;font-weight:500}
+.rows{list-style:none;margin:10px 0 0;padding:0}
+.rows li{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:1px 10px;align-items:center;padding:8px 0;border-top:1px solid var(--line);font-size:13.5px}
+.rows .d{width:10px;height:10px;border-radius:50%}
+.rows .q{border-radius:0;background:var(--site);box-shadow:0 0 0 1.5px var(--ink)}
+.rows b{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rows em{font-style:normal;font-family:var(--f-display);font-weight:800;font-size:16px}
+.rows small{grid-column:2 / 4;color:var(--muted);font-size:12px}
+.hero .ex{font-size:11.5px;color:var(--muted);margin:10px 0 0;max-width:none}
+
+/* Fonctions */
+.white{background:var(--panel)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:40px}
+.card{border:1px solid var(--line);border-radius:16px;padding:24px;background:var(--bg);min-width:0}
+.white .card{background:var(--bg)}
+.card h3{font-family:var(--f-display);font-weight:700;font-size:20px;letter-spacing:-.02em;margin:16px 0 6px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.ico{width:44px;height:44px;border-radius:12px;background:var(--ink);display:grid;place-items:center}
+.ico svg{width:24px;height:24px}
+.ico .a{fill:var(--site)}.ico .b{fill:var(--bg)}.ico .l{stroke:var(--site);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}.ico .l2{stroke:var(--bg);fill:none;stroke-width:2.4;stroke-linecap:round}
+
+/* Étapes */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:40px 0 0;padding:0;list-style:none;counter-reset:e}
+.steps li{counter-increment:e;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
+.steps li::before{content:counter(e);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--site);color:var(--on-site);font-family:var(--f-display);font-weight:800;font-size:20px}
+.steps h3{font-family:var(--f-display);font-weight:700;font-size:20px;letter-spacing:-.02em;margin:16px 0 6px}
+.steps p{margin:0;color:var(--muted);font-size:15px}
+
+/* Démonstration */
+.demo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{border:1.5px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:9px 16px;font:500 14px var(--f-body);cursor:pointer}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.answer{background:var(--hero);color:var(--hero-ink);border-radius:18px;padding:28px;min-height:190px;display:flex;flex-direction:column;justify-content:center}
+.answer b{font-family:var(--f-display);font-weight:800;font-size:clamp(44px,7vw,68px);line-height:1;letter-spacing:-.04em;color:var(--site);font-variant-numeric:tabular-nums}
+.answer span{color:var(--hero-muted);margin-top:10px;font-size:16px}
+
+/* Tarifs */
+.pilot{margin:22px 0 0;max-width:70ch;background:var(--site-soft);color:var(--site-ink);border-radius:12px;padding:12px 16px;font-size:14.5px}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:32px;align-items:stretch}
+.plan{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;min-width:0}
+.plan.on{border:2px solid var(--ink)}
+.best{position:absolute;top:-13px;left:26px;background:var(--site);color:var(--on-site);font-size:12px;font-weight:700;letter-spacing:.04em;padding:4px 10px;border-radius:999px}
+.plan h3{font-family:var(--f-display);font-weight:800;font-size:24px;letter-spacing:-.02em;margin:0}
+.price{font-family:var(--f-display);font-weight:800;font-size:46px;letter-spacing:-.04em;line-height:1;margin:18px 0 0;font-variant-numeric:tabular-nums}
+.price small{font-family:var(--f-body);font-weight:500;font-size:15px;letter-spacing:0;color:var(--muted)}
+.plan .sub{color:var(--muted);font-size:14px;margin:4px 0 0}
+.plan em{font-style:normal;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:1px 7px;white-space:nowrap}
+.btn.line{border-color:var(--ink);color:var(--ink)}
+.btn.line:hover{background:var(--soft)}
+.quote{margin:20px 0 0;color:var(--muted);font-size:15px}
+.quote b{color:var(--ink)}
+.plan ul{list-style:none;margin:20px 0 24px;padding:0;display:flex;flex-direction:column;gap:9px;font-size:15px}
+.plan li{position:relative;padding-left:26px}
+.plan li::before{content:"";position:absolute;left:2px;top:8px;width:9px;height:9px;background:var(--site);box-shadow:0 0 0 1.5px var(--ink)}
+.plan .btn{margin-top:auto}
+.soon{margin-top:auto;font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+
+/* Appel final et pied */
+.final{background:var(--hero);color:var(--hero-ink);text-align:center}
+.final h2{max-width:18em;margin-inline:auto}
+.final p{color:var(--hero-muted);margin:14px auto 28px;max-width:52ch}
+footer{background:var(--hero);color:var(--hero-muted);border-top:1px solid var(--hero-line);padding-block:36px;font-size:14px}
+footer .in{display:flex;flex-wrap:wrap;gap:20px 48px;justify-content:space-between}
+footer .brand{color:var(--hero-ink)}
+footer .brand .tile{fill:var(--site)}footer .brand .arc{stroke:var(--on-site)}footer .brand .sq{fill:var(--on-site)}
+footer p{margin:10px 0 0;max-width:46ch}
+footer nav{display:flex;flex-direction:column;gap:8px}
+footer nav a{text-decoration:none}
+footer nav a:hover{color:var(--hero-ink)}
+@media (max-width:900px){
+  .hero .in,.demo{grid-template-columns:minmax(0,1fr)}
+  .links{display:none}
+  .nav .in{justify-content:space-between}
+  section{padding-block:56px}
+  .hero{padding-block:48px 56px}
+}
+@media (max-width:480px){.brand{font-size:22px}.nav .btn{padding:0 12px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<div class="nav"><div class="in">
+  <a class="brand" href="#haut" aria-label="ChantikoCRM"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="tile" width="64" height="64" rx="14"/><path class="arc" d="M44.7 19.3A18 18 0 1 0 44.7 44.7" fill="none" stroke-width="8"/><rect class="sq" x="30.5" y="26.5" width="11" height="11"/></svg>Chantiko<span class="crm">CRM</span></a>
+  <nav class="links" aria-label="Sections"><a href="#fonctions">Fonctionnalités</a><a href="#etapes">Comment ça marche</a><a href="#tarifs">Tarifs</a></nav>
+  <a class="btn dark sm" href="app.html">Ouvrir l'application →</a>
+</div></div>
+
+<header class="hero" id="haut"><div class="in">
+  <div>
+    <span class="pill"><i></i>Pour les commerciaux des négoces et des loueurs</span>
+    <h1>Le CRM du bâtiment qui arrive <b>déjà rempli</b></h1>
+    <p>ChantikoCRM place sur une carte les entreprises du bâtiment et les chantiers autorisés autour de vous, les classe par potentiel, et garde vos contacts, vos échanges et vos relances.</p>
+    <div class="cta"><a class="btn y" href="app.html">Ouvrir l'application</a><a class="btn ghost" href="#etapes">Voir comment ça marche</a></div>
+    <ul class="figs"><li><b>20 987</b><span>entreprises du BTP</span></li><li><b>6 028</b><span>chantiers autorisés</span></li><li><b>6</b><span>départements</span></li></ul>
+  </div>
+  <div class="win" aria-label="Aperçu de l'application">
+    <div class="bar"><i></i><i></i><i></i><span>ChantikoCRM · Aujourd'hui</span></div>
+    <div class="wb">
+      <h3>Votre journée</h3>
+      <div class="tiles"><div class="tile2"><b>20 987</b><span>entreprises dans la zone</span></div><div class="tile2"><b>6 028</b><span>chantiers dans la zone</span></div></div>
+      <div class="due">2 fiches à relancer aujourd'hui</div>
+      <ul class="rows">
+        <li><span class="d" style="background:var(--m-go)"></span><b>Maçonnerie générale, 20 à 49 salariés</b><em>93</em><small>Gros œuvre · Aix-en-Provence · 51 chantiers proches</small></li>
+        <li><span class="d" style="background:var(--m-is)"></span><b>Isolation et plâtrerie, 10 à 19 salariés</b><em>88</em><small>Isolation · Antibes · créée en 2025</small></li>
+        <li><span class="d q"></span><b>119 logements</b><em>ouvert</em><small>Promoteur · Aubagne · permis du 12/03/2026</small></li>
+      </ul>
+      <p class="ex">Exemple d'écran : les totaux sont ceux de la région chargée, les trois lignes sont fictives.</p>
+    </div>
+  </div>
+</div></header>
+
+<section class="white" id="fonctions"><div class="in">
+  <p class="kicker">Fonctionnalités</p>
+  <h2>Tout ce qu'il faut pour remplir votre semaine</h2>
+  <p class="lead">Un CRM classique arrive vide. Celui-ci s'ouvre avec votre secteur déjà dedans.</p>
+  <div class="grid">
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="a" cx="7" cy="8" r="3"/><circle class="b" cx="16" cy="6" r="2"/><circle class="b" cx="17" cy="15" r="3"/><circle class="a" cx="8" cy="17" r="2"/></svg></div>
+      <h3>La carte des entreprises</h3><p>Tous les employeurs du bâtiment de votre secteur, par métier et par taille, à partir du registre officiel des entreprises.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect class="a" x="4" y="4" width="7" height="7"/><rect class="b" x="14" y="6" width="5" height="5"/><rect class="b" x="6" y="14" width="5" height="5"/><rect class="a" x="13" y="13" width="7" height="7"/></svg></div>
+      <h3>Les chantiers autorisés</h3><p>Les permis accordés à des sociétés, avec le maître d'ouvrage, la surface et les chantiers déjà ouverts.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="l2" d="M4 18h16"/><path class="l" d="M4 18h11"/><path class="l2" d="M4 12h16"/><path class="l" d="M4 12h14"/><path class="l2" d="M4 6h16"/><path class="l" d="M4 6h7"/></svg></div>
+      <h3>Un potentiel sur 100</h3><p>Chaque entreprise est notée selon sa taille, son métier et les chantiers à moins de 5 km. Vous voyez d'abord celles qui comptent.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="a" cx="12" cy="8" r="4"/><path class="l2" d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></div>
+      <h3>Contacts et journal</h3><p>Sur chaque fiche : vos interlocuteurs, l'historique daté de vos appels, visites et emails, et l'étape en cours.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle class="l2" cx="12" cy="13" r="7"/><path class="l" d="M12 9v4l3 2"/><path class="l2" d="M9 3h6"/></svg></div>
+      <h3>Les relances</h3><p>Fixez une date de rappel, ou laissez l'outil signaler les fiches restées sans nouvelle. Rien ne se perd.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="l2" d="M6 18C6 10 18 14 18 6" stroke-dasharray="2 3"/><circle class="a" cx="6" cy="18" r="3"/><circle class="a" cx="18" cy="6" r="3"/></svg></div>
+      <h3>La tournée</h3><p>Ajoutez vos visites : l'ordre le plus court, les kilomètres et la durée se calculent tout seuls.</p></div>
+  </div>
+</div></section>
+
+<section id="etapes"><div class="in">
+  <p class="kicker">Comment ça marche</p>
+  <h2>Trois étapes, sans installation</h2>
+  <ol class="steps">
+    <li><h3>Ouvrez votre région</h3><p>La carte de France s'ouvre sur votre secteur. Entreprises et chantiers sont déjà là.</p></li>
+    <li><h3>Repérez qui visiter</h3><p>L'onglet « Aujourd'hui » liste les entreprises au plus fort potentiel et les chantiers qui viennent d'ouvrir dans la zone affichée.</p></li>
+    <li><h3>Suivez et relancez</h3><p>Notez le contact, l'échange et la prochaine relance. Le jour venu, la fiche remonte en tête de liste.</p></li>
+  </ol>
+</div></section>
+
+<section class="white"><div class="in demo">
+  <div>
+    <p class="kicker">Essayez un filtre</p>
+    <h2>Posez la question, la carte répond</h2>
+    <p class="lead">Quelques filtres de l'application, avec les vrais chiffres de la région chargée.</p>
+    <div class="chips" role="group" aria-label="Filtres d'exemple">
+      <button type="button" class="chip" id="c-new" aria-pressed="true" data-n="3 670" data-t="entreprises créées depuis 2024, pas encore liées à un fournisseur">Créées depuis 2024</button>
+      <button type="button" class="chip" id="c-open" aria-pressed="false" data-n="1 050" data-t="chantiers déclarés ouverts, où les achats commencent">Chantiers ouverts</button>
+      <button type="button" class="chip" id="c-big" aria-pressed="false" data-n="289" data-t="chantiers de 50 logements ou 5 000 m² et plus">Gros chantiers</button>
+      <button type="button" class="chip" id="c-20" aria-pressed="false" data-n="1 289" data-t="entreprises de 20 salariés et plus">20 salariés et plus</button>
+      <button type="button" class="chip" id="c-rge" aria-pressed="false" data-n="1 903" data-t="entreprises labellisées RGE, tournées vers la rénovation énergétique">Labellisées RGE</button>
+    </div>
+  </div>
+  <div class="answer" aria-live="polite"><b id="a-n">3 670</b><span id="a-t">entreprises créées depuis 2024, pas encore liées à un fournisseur</span></div>
+</div></section>
+
+<section id="tarifs"><div class="in">
+  <p class="kicker">Tarifs</p>
+  <h2>Simple et transparent</h2>
+  <p class="lead">Trois offres, selon que vous prospectez seul ou en équipe.</p>
+  <p class="pilot"><b>Accès libre en ce moment.</b> Les abonnements ouvriront avec les comptes utilisateurs. D'ici là, l'application s'utilise sans compte ni carte bancaire, et les fonctions marquées « bientôt » ne sont pas encore disponibles.</p>
+  <div class="plans">
+    <div class="plan"><h3>Solo</h3><p class="sub">Pour le commercial indépendant</p><div class="price">39 €<small> / mois TTC</small></div>
+      <ul><li>1 utilisateur</li><li>Votre région : Provence-Alpes-Côte d'Azur aujourd'hui</li><li>Carte, recherche et potentiel sur 100</li><li>Fiches avec contacts, journal et rappels</li><li>Tournée du jour</li></ul>
+      <a class="btn line" href="app.html">Démarrer</a></div>
+    <div class="plan on"><span class="best">Conseillé</span><h3>Pro</h3><p class="sub">Pour le commercial confirmé</p><div class="price">69 €<small> / mois TTC</small></div>
+      <ul><li>Tout le plan Solo</li><li>Toutes les régions, à mesure de leur ouverture <em>bientôt</em></li><li>Alertes sur les nouveaux chantiers de votre secteur <em>bientôt</em></li><li>Itinéraire routier réel pour la tournée <em>bientôt</em></li><li>Export Excel de vos fiches <em>bientôt</em></li></ul>
+      <a class="btn dark" href="app.html">Démarrer</a></div>
+    <div class="plan"><h3>Team</h3><p class="sub">Pour les équipes jusqu'à 5 personnes</p><div class="price">99 €<small> / mois TTC</small></div>
+      <ul><li>Tout le plan Pro</li><li>Jusqu'à 5 commerciaux <em>bientôt</em></li><li>Fiches et suivi partagés dans l'équipe <em>bientôt</em></li><li>Vue d'ensemble pour le responsable <em>bientôt</em></li></ul>
+      <a class="btn line" href="app.html">Démarrer</a></div>
+  </div>
+  <p class="quote"><b>Entreprise.</b> Plus de 5 commerciaux : offre sur devis.</p>
+</div></section>
+
+<section class="final"><div class="in">
+  <h2>Vos prochains clients sont déjà sur la carte</h2>
+  <p>Ouvrez l'application, choisissez votre région et commencez par les dix premières entreprises de la liste.</p>
+  <a class="btn y" href="app.html">Ouvrir l'application</a>
+</div></section>
+
+<footer><div class="in">
+  <div><a class="brand" href="#haut" aria-label="ChantikoCRM"><svg viewBox="0 0 64 64" aria-hidden="true"><rect class="tile" width="64" height="64" rx="14"/><path class="arc" d="M44.7 19.3A18 18 0 1 0 44.7 44.7" fill="none" stroke-width="8"/><rect class="sq" x="30.5" y="26.5" width="11" height="11"/></svg>Chantiko<span class="crm">CRM</span></a>
+    <p>Données publiques du 15/11/2026 : établissements employeurs du BTP (base SIRENE, INSEE) et permis accordés à des sociétés depuis le 01/01/2025 (base Sitadel, SDES).</p></div>
+  <nav aria-label="Liens"><a href="#fonctions">Fonctionnalités</a><a href="#etapes">Comment ça marche</a><a href="#tarifs">Tarifs</a><a href="app.html">Ouvrir l'application</a></nav>
+</div></footer>
+
+<script>
+// Démonstration : un filtre à la fois, avec le chiffre réel calculé à la construction de la page.
+document.querySelectorAll('.chip').forEach(function (c) {
+  c.addEventListener('click', function () {
+    document.querySelectorAll('.chip').forEach(function (o) { o.setAttribute('aria-pressed', String(o === c)); });
+    document.getElementById('a-n').textContent = c.dataset.n;
+    document.getElementById('a-t').textContent = c.dataset.t;
+  });
+});
+</script>
+
+<script>if ('serviceWorker' in navigator) window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); });</script>
+</body>
+</html>
